@@ -972,106 +972,127 @@ body {
 
 /* Navbar and header adjustments for screens 768px and below */
 @media (max-width: 768px) {
-    .header {
-        padding: 2rem 5%;
-    }
-
-    .home-content {
-        margin-top: 10px;
-        max-width: 100%;
+    * {
+        align-items: center;
         align-content: center;
     }
 
-    .home-content h1 {
-        font-size: 4rem; /* Adjusted for better fit on smaller screens */
-        font-weight: 700;
-        margin: 20px 0;
+    .header {
+        padding: 2rem 6%; /* Thoda zyada padding for tablets */
     }
 
-    .home-content h3 {
-        font-size: 2.5rem; /* Adjusted for better fit on smaller screens */
-        margin-bottom: 1rem;
+    .home {
+        flex-direction: column;
+        text-align: center;
+        padding: 4rem 5%;
     }
 
-    .home-content p {
-        font-size: 1.6rem; /* Adjusted for better fit on smaller screens */
-        font-weight: 400;
-        line-height: 2.5rem;
-        margin-bottom: 3rem;
-        margin-left: 20px; /* Added left margin for better alignment */
-    }
-
-    .change-text {
-        font-size: 0.9rem;
-        font-weight: 600;
-    }
-
-    .change-text h3 {
-        display: inline-flex;
-        margin: 0;
-        position: relative;
-    }
-
-    .change-text h3 .word {
-        margin-top: 35px;
-        color: var(--main-color);
-        position: absolute;
-        opacity: 0;
-        direction: calc(50% - 50%);
-        transition: opacity 0.5s ease;
-        margin-right: 100px; /* Space between words */
-    }
-
-    .change-text h3 .word .letter {
-        display: flex;
-        transform-origin: center center 0;
-        transition: transform 0.32s cubic-bezier(0.6, 0, 0.7, 0.2), opacity 0.32s ease;
-    }
-
-    .letter.out {
-        transform: rotateX(90deg);
-        opacity: 0; /* Hide letters that are transitioning out */
-    }
-
-    .letter.in {
-        transform: rotateX(0deg);
-        opacity: 1; /* Show letters that are transitioning in */
-        transition: transform 0.38s ease, opacity 0.38s ease;
-    }
-
-    .letter.behind {
-        transform: rotateX(-90deg);
-        opacity: 0; /* Hide letters that are behind */
-    }
-
-    /* Social Icons Styles */
-    .social-icons {
-        display: flex;
-        gap: 1.5rem; /* Adjusted for smaller screens */
-        margin-bottom: 2rem;
-        justify-content: center;
-    }
-
-    .social-icons a {
-        width: 4rem;
-        height: 4rem;
-        font-size: 2rem; /* Adjusted for smaller screens */
+    .home-content {
+        max-width: 100%;
+        margin-top: 2rem;
     }
 
     .home-img img {
-        width: 80%; /* Adjusted for smaller screens */
+        width: 65%; /* Adjusted for 768px */
+        margin: 15px 0;
+    }
+
+    .logo {
+        font-size: 2rem; /* Thoda bara for readability */
     }
 
     .navbar {
-        display: none;
+        width: 100%;
+        background-color: var(--bg-color);
+        padding: 1.2rem 0;
+    }
+
+    .navbar a {
+        font-size: 1rem; /* Adjusted font size */
+        margin-bottom: 1rem;
     }
 
     #menu-icon {
         display: block;
     }
+
+    .navbar.active {
+        display: flex;
+    }
+
+    .banner {
+        height: 90vh; /* Adjusted for 768px */
+    }
+
+    .banner .slider {
+        width: 80px;
+        height: 150px;
+    }
+
+    .banner .slider .item {
+        transform: rotateY(calc(var(--position) * 360deg / var(--quantity))) translateZ(150px);
+    }
+
+    .btn-group {
+        justify-content: center;
+    }
+
+    .timeline-items::before {
+        display: none;
+    }
+
+    .timeline-item {
+        padding: 0 !important;
+        text-align: center;
+    }
+
+    .timeline-dot {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-content {
+        padding: 20px;
+    }
+
+    .project-box {
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+
+    .project-box h3 {
+        font-size: 2rem;
+    }
+
+    .project-box p {
+        font-size: 1.4rem;
+    }
+
+    .footer ul li {
+        display: block;
+        margin: 1rem 0;
+    }
+
+    .footer .social a {
+        margin: 0 5px;
+    }
+
+    .btn {
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+    }
+
+    .social-icons a {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 2rem;
+    }
+
+    .video-background video {
+        width: 150%;
+    }
 }
 
-/* Small screens adjustments (480px and below) */
 @media (max-width: 480px) {
     * {
         align-items: center;
@@ -1084,15 +1105,15 @@ body {
 
     .home-img img {
         width: 60%;
-        margin: 10px 0; /* Reduced margin for smaller screens */
+        margin: 10px 0;
     }
 
     .logo {
-        font-size: 1.5rem; /* Adjusted for smaller screens */
+        font-size: 1.5rem;
     }
 
     .navbar a {
-        font-size: 0.8rem; /* Adjusted for smaller screens */
+        font-size: 0.8rem;
     }
 
     .banner {
@@ -1100,14 +1121,15 @@ body {
     }
 
     .banner .slider {
-        width: 60px; /* Adjusted for smaller screens */
-        height: 120px; /* Adjusted for smaller screens */
+        width: 60px;
+        height: 120px;
     }
 
     .banner .slider .item {
-        transform: rotateY(calc(var(--position) * 360deg / var(--quantity))) translateZ(120px); /* Adjusted for smaller screens */
+        transform: rotateY(calc(var(--position) * 360deg / var(--quantity))) translateZ(120px);
     }
 }
+
 
 /* Keyframes for auto-rotation */
 @keyframes autoRotate {
