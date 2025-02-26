@@ -975,41 +975,44 @@ body {
     * {
         align-items: center;
         align-content: center;
+        text-align: center;
     }
 
     .header {
-        padding: 2rem 6%; /* Thoda zyada padding for tablets */
+        padding: 2rem 6%;
     }
 
     .home {
         flex-direction: column;
         text-align: center;
-        padding: 4rem 5%;
+        padding: 3rem 5%;
     }
 
     .home-content {
-        max-width: 100%;
-        margin-top: 2rem;
+        max-width: 90%;
+        margin: auto;
     }
 
     .home-img img {
-        width: 65%; /* Adjusted for 768px */
-        margin: 15px 0;
+        width: 70%;
+        margin: 15px auto;
+        display: block;
     }
 
     .logo {
-        font-size: 2rem; /* Thoda bara for readability */
+        font-size: 2rem;
     }
 
     .navbar {
         width: 100%;
         background-color: var(--bg-color);
-        padding: 1.2rem 0;
+        padding: 1rem 0;
     }
 
     .navbar a {
-        font-size: 1rem; /* Adjusted font size */
-        margin-bottom: 1rem;
+        font-size: 1rem;
+        margin: 10px 0;
+        display: block;
     }
 
     #menu-icon {
@@ -1021,7 +1024,10 @@ body {
     }
 
     .banner {
-        height: 90vh; /* Adjusted for 768px */
+        height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .banner .slider {
@@ -1035,6 +1041,9 @@ body {
 
     .btn-group {
         justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .timeline-items::before {
@@ -1042,7 +1051,6 @@ body {
     }
 
     .timeline-item {
-        padding: 0 !important;
         text-align: center;
     }
 
@@ -1056,16 +1064,14 @@ body {
     }
 
     .project-box {
+        text-align: center;
         padding: 1.5rem;
-        margin: 1rem 0;
+        margin: 1rem auto;
+        max-width: 90%;
     }
 
-    .project-box h3 {
-        font-size: 2rem;
-    }
-
-    .project-box p {
-        font-size: 1.4rem;
+    .footer ul {
+        text-align: center;
     }
 
     .footer ul li {
@@ -1082,6 +1088,10 @@ body {
         font-size: 1.4rem;
     }
 
+    .social-icons {
+        text-align: center;
+    }
+
     .social-icons a {
         width: 3.5rem;
         height: 3.5rem;
@@ -1089,7 +1099,56 @@ body {
     }
 
     .video-background video {
-        width: 150%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 512px) {
+    * {
+        align-items: center;
+        align-content: center;
+        text-align: center;
+    }
+
+    .header {
+        padding: 1.5rem 5%;
+    }
+
+    .home-img img {
+        width: 65%;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .navbar a {
+        font-size: 0.9rem;
+    }
+
+    .banner {
+        height: 90vh;
+    }
+
+    .banner .slider {
+        width: 70px;
+        height: 130px;
+    }
+
+    .banner .slider .item {
+        transform: rotateY(calc(var(--position) * 360deg / var(--quantity))) translateZ(130px);
+    }
+
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-box {
+        max-width: 90%;
     }
 }
 
@@ -1097,6 +1156,7 @@ body {
     * {
         align-items: center;
         align-content: center;
+        text-align: center;
     }
 
     .header {
@@ -1105,7 +1165,8 @@ body {
 
     .home-img img {
         width: 60%;
-        margin: 10px 0;
+        margin: 10px auto;
+        display: block;
     }
 
     .logo {
