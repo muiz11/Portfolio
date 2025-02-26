@@ -1,3 +1,150 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --bg-color: #080808; /* Dark background color */
+    --second-bg-color: #131313; /* Slightly lighter background color for sections */
+    --text-color: white; /* Text color */
+    --main-color: #00ffee; /* Main accent color */
+}
+
+/* Base Font Size */
+html {
+    font-size: 62.5%; /* 1rem = 10px for easier rem calculations */
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+/* Background Video Styles */
+.video-background {
+    position: fixed; /* Fix the video to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Ensure the video stays behind other content */
+    filter: blur(8px); /* Apply blur effect to the video */
+}
+
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Ensure video covers the container */
+}
+
+/* Body Styles */
+body {
+    height: auto;
+    width: 100%;
+    margin: 0;
+    background: var(--bg-color); /* Set background color */
+    color: var(--text-color); /* Set text color */
+    font-size: 1.6rem; /* Base font size */
+}
+
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 12%; /* Adjusted padding for header */
+    background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+    backdrop-filter: blur(8px); /* Apply blur effect to the background */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5; /* Ensure header is above other content */
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth scaling effect on hover */
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Slightly enlarge logo on hover */
+}
+
+.logo span {
+    text-shadow: 0 0 25px var(--main-color); /* Glowing effect for logo text */
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.navbar a {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease; /* Smooth transition for hover effect */
+    border-bottom: 3px solid transparent; /* Bottom border for active and hover states */
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+    border-bottom: 3px solid var(--main-color); /* Highlight active or hovered link */
+}
+
+#menu-icon {
+    background: url('images/menu.icon.png') no-repeat center center;
+    background-size: contain;
+    font-size: 3.6rem;
+    color: var(--main-color);
+    cursor: pointer;
+    display: none; /* Hide menu icon by default */
+}
+
+/* Mobile Menu Styles */
+.navbar-menu {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Initially hidden off-screen */
+    width: 100%;
+    height: 100vh;
+    background: var(--second-bg-color);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.3s ease; /* Smooth transition for menu sliding */
+    z-index: 1000; /* Ensure menu is above other content */
+    padding: 2rem;
+    display: none; /* Hide menu by default */
+}
+
+.navbar-menu.active {
+    left: 0; /* Slide in the menu */
+    display: flex; /* Show the menu when active */
+}
+
+.navbar-menu a {
+    margin: 1rem 0;
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
 /* Home Section Styles */
 .home {
     margin-top: 2.5rem; /* Space for fixed header */
@@ -5,50 +152,30 @@
     justify-content: space-between;
     align-items: center;
     padding: 10rem 12%; /* Padding for the home section */
-    flex-wrap: wrap; /* Ensure wrapping for smaller screens */
 }
 
-/* Responsive Fix */
-@media (max-width: 768px) {
-    .home {
-        flex-direction: column-reverse; /* Image below text on small screens */
-        align-items: center;
-        text-align: center;
-        padding: 5rem 5%;
-    }
+.home-content {
+    max-width: 50%; /* Limit the width of home content */
+    text-align: left; /* Align text to the left */
+}
 
-    .home-content {
-        max-width: 100%; /* Allow text to take full width */
-        text-align: center;
-    }
+.home-content h1 {
+    font-size: 6rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
 
-    .home-content h1 {
-        font-size: 4rem; /* Adjusted for better mobile readability */
-    }
+.home-content h3 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
 
-    .home-content h3 {
-        font-size: 3rem;
-    }
-
-    .home-content p {
-        font-size: 1.8rem;
-        line-height: 2.8rem;
-        margin-left: 0; /* Removed left margin to center-align */
-    }
-
-    .social-icons {
-        justify-content: center;
-    }
-
-    .btn-group {
-        justify-content: center;
-    }
-
-    .home-img img {
-        margin-left: 0; /* Removed fixed margin */
-        width: 70%;
-        max-width: 30rem;
-    }
+.home-content p {
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 3.5rem;
+    margin-bottom: 2.5rem;
+    margin-left: 20px; /* Added left margin for better alignment */
 }
 
 /* Social Icons Styles */
@@ -75,7 +202,7 @@
 }
 
 .social-icons a:hover {
-    transform: scale(1.2) translateY(-10px);
+    transform: scale(1.2)translateY(-10px);
     background-color: var(--main-color);
     color: #080808;
     box-shadow: 0 0 25px var(--main-color);
@@ -168,7 +295,6 @@
     transform: rotateX(-90deg);
     opacity: 0; /* Hide letters that are behind */
 }
-
 /* Existing Styles */
 
 /* General Heading Styles */
@@ -176,4 +302,819 @@
     font-size: 7rem; /* Large heading size for emphasis */
     text-align: center;
     margin: 5rem 0; /* Vertical margin for spacing */
+}
+
+/* Education Section Styles */
+.education {
+    position: relative;
+    padding: 100px 15px;
+    overflow: hidden;
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+/* Video Background Styling */
+.video-background2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-background2 video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(8px);
+}
+
+/* Background Overlay for Education Section */
+.education::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Semi-transparent overlay */
+    z-index: -1;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+}
+
+.education h2 {
+    font-size: 5rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+/* Additional styles for timeline items, dates, and content */
+.timeline-items {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.timeline-items::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background-color: var(--main-color);
+    left: calc(50% - 1px);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.timeline-item {
+    margin: 0 20px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(odd) {
+    padding-right: calc(50% + 30px);
+    text-align: left;
+}
+
+.timeline-item:nth-child(even) {
+    padding-left: calc(50% + 30px);
+}
+
+.timeline-dot {
+    height: 16px;
+    width: 16px;
+    background-color: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color), 0 0 50px var(--main-color);
+    position: absolute;
+    left: calc(50% - 8px);
+    top: 10px;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.timeline-date {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-color);
+    margin: 6px 0 15px;
+    text-align: center;
+}
+
+.timeline-content {
+    background-color: var(--bg-color);
+    border: 3px solid var(--main-color);
+    padding: 30px;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.timeline-content:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px var(--main-color);
+}
+
+.timeline-content h3 {
+    font-size: 2rem;
+    color: var(--main-color);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.timeline-content p {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    line-height: 2.5rem;
+    margin-bottom: 0;
+}
+/* Projects Section */
+/* Projects Section */
+.projects {
+    position: relative;
+    text-align: center;
+    margin: 0;
+    padding: 2rem;
+    color: var(--text-color);
+    overflow: hidden; /* Ensures content does not overflow */
+}
+
+.content {
+    position: relative;
+    z-index: 1; /* Ensures content is above the video */
+    padding: 2rem;
+}
+
+.content h2 {
+    font-size: 5rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.project-box {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+    border: 1px solid var(--main-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 1rem auto;
+    max-width: 800px;
+    color: var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.project-box h3 {
+    font-size: 2.5rem;
+    color: var(--main-color);
+    margin-bottom: 1.5rem;
+}
+
+.project-box p {
+    font-size: 1.6rem;
+    font-weight: 400;
+    text-align: justify; /* Justify text alignment */
+    line-height: 2.2rem;
+    color: #d0d0d0;
+}
+
+/* Banner Section (Slider) */
+.banner {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    perspective: 1000px;
+    padding: 2rem;
+}
+
+.banner .slider {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    transform-style: preserve-3d;
+    animation: autoRotate 20s infinite linear;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+.banner .slider:hover {
+    animation-play-state: paused;
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(calc(var(--position) * 360deg / var(--quantity))) translateZ(350px);
+    transition: transform 1s ease-in-out;
+}
+
+.banner .slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+.banner .slider .item img:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+
+.contact {
+    background-color: var(--bg-color);
+}
+
+.contact h2 {
+    padding-top: 70px;
+    font-size: 5rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.contact form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin: 5rem auto;
+    text-align: center;
+}
+
+.contact form .input-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+    width: 100%;
+    padding: 4rem;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    background: var(--second-bg-color);
+    border-radius: 2rem;
+    border: 2px solid var(--main-color);
+    margin: 1.5rem 0;
+    resize: none;
+}
+
+.contact form .btn {
+    margin-top: 2rem;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 40px 0;
+    background-color: var(--second-bg-color);
+    margin-top: 0; /* Ensure no margin at the top */
+    margin-bottom: 0; /* Ensure no margin at the bottom */
+}
+
+.footer .social {
+    text-align: center;
+    padding-bottom: 25px;
+    color: var(--main-color);
+}
+
+.footer .social a {
+    font-size: 25px;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.footer .social a:hover {
+    transform: scale(1.2) translateY(-10px);
+    background-color: var(--main-color);
+    color: #080808;
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+.footer ul {
+    margin-top: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.footer ul li a {
+    padding: 20px;
+    color: white;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s ease-in-out;
+}
+
+.footer ul li a:hover {
+    border-bottom: 3px solid var(--main-color);
+}
+
+.footer ul li {
+    display: inline-block;
+    padding: 0;
+}
+
+.footer .copyright {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--bg-color);
+}
+
+/* Base Styles */
+
+/* Large screens adjustments */
+/* Base font size adjustments */
+@media (max-width: 1585px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+/* Header and general section adjustments for medium screens */
+@media (max-width: 1024px) {
+    .header {
+        padding: 2rem 8%;
+    }
+
+    .navbar a {
+        margin-left: 3rem;
+    }
+}
+
+/* Header, navbar, and home section adjustments for screens 999px and below */
+@media (max-width: 999px) {
+    * {
+        align-items: center;
+    }
+
+    .header {
+        padding: 2rem 3%;
+    }
+
+    .home {
+        margin-top: 2.5rem; /* Space for fixed header */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10rem 8%;
+    }
+
+    .home-content {
+        margin-top: 10px;
+        max-width: 100%;
+        align-content: center;
+    }
+
+    .home-content h1 {
+        font-size: 5rem;
+        font-weight: 700;
+        margin: 10px 0;
+    }
+
+    .home-content h3 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .home-content p {
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 2.5rem;
+        margin-bottom: 3.5rem;
+        margin-left: 20px; /* Added left margin for better alignment */
+    }
+
+    .change-text {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .change-text h3 {
+        display: inline-flex;
+        margin: 0;
+        position: relative;
+    }
+
+    .change-text h3 .word {
+        margin-top: 35px;
+        color: var(--main-color);
+        position: absolute;
+        opacity: 0;
+        direction: calc(50% - 50%);
+        transition: opacity 0.5s ease;
+        margin-right: 100px; /* Space between words */
+    }
+
+    .change-text h3 .word .letter {
+        display: flex;
+        transform-origin: center center 0;
+        transition: transform 0.32s cubic-bezier(0.6, 0, 0.7, 0.2), opacity 0.32s ease;
+    }
+
+    .letter.out {
+        transform: rotateX(90deg);
+        opacity: 0; /* Hide letters that are transitioning out */
+    }
+
+    .letter.in {
+        transform: rotateX(0deg);
+        opacity: 1; /* Show letters that are transitioning in */
+        transition: transform 0.38s ease, opacity 0.38s ease;
+    }
+
+    .letter.behind {
+        transform: rotateX(-90deg);
+        opacity: 0; /* Hide letters that are behind */
+    }
+
+    /* Social Icons Styles */
+    .social-icons {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        justify-content: flex-start;
+    }
+
+    .social-icons a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 4.5rem;
+        height: 4.5rem;
+        background: transparent;
+        border: 2px solid var(--main-color);
+        font-size: 2.5rem;
+        border-radius: 50%;
+        color: var(--main-color);
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .home-img img {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .section {
+        padding: 10rem 3% 2rem;
+    }
+
+    .timeline-dot {
+        left: 0;
+    }
+
+    .contact form {
+        padding: 2rem 3%;
+    }
+
+    .timeline-items::before {
+        display: none; /* Hide the timeline line */
+    }
+
+    .timeline-item {
+        margin: 10px;
+        padding: 0 20px;
+    }
+}
+
+/* Navbar and header adjustments for screens 895px and below */
+@media (max-width: 900px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 20%;
+        background-color: var(--second-bg-color);
+        flex-direction: column;
+        align-items: center;
+        display: none; /* Hidden by default */
+    }
+
+    .navbar a {
+        font-size: 2rem;
+        margin: 1rem 0;
+        display: block;
+    }
+
+    .navbar.active {
+        display: flex; /* Show navbar when active */
+    }
+
+    .home-content {
+        margin-top: 10px;
+        max-width: 100%;
+        align-content: center;
+        position: relative;
+    }
+
+    .home-content h1 {
+        font-size: 5rem;
+        font-weight: 700;
+        margin: 20px 0;
+    }
+
+    .home-content h3 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .home-content p {
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 2.5rem;
+        margin-bottom: 3.5rem;
+        margin-left: 20px; /* Added left margin for better alignment */
+    }
+
+    .change-text {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .change-text h3 {
+        display: inline-flex;
+        margin: 0;
+        position: relative;
+    }
+
+    .change-text h3 .word {
+        margin-top: 35px;
+        color: var(--main-color);
+        position: absolute;
+        opacity: 0;
+        direction: calc(50% - 50%);
+        transition: opacity 0.5s ease;
+        margin-right: 100px; /* Space between words */
+    }
+
+    .change-text h3 .word .letter {
+        display: flex;
+        transform-origin: center center 0;
+        transition: transform 0.32s cubic-bezier(0.6, 0, 0.7, 0.2), opacity 0.32s ease;
+    }
+
+    .letter.out {
+        transform: rotateX(90deg);
+        opacity: 0; /* Hide letters that are transitioning out */
+    }
+
+    .letter.in {
+        transform: rotateX(0deg);
+        opacity: 1; /* Show letters that are transitioning in */
+        transition: transform 0.38s ease, opacity 0.38s ease;
+    }
+
+    .letter.behind {
+        transform: rotateX(-90deg);
+        opacity: 0; /* Hide letters that are behind */
+    }
+
+    /* Social Icons Styles */
+    .social-icons {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        justify-content: flex-start;
+    }
+
+    .social-icons a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 4.5rem;
+        height: 4.5rem;
+        background: transparent;
+        border: 2px solid var(--main-color);
+        font-size: 2.5rem;
+        border-radius: 50%;
+        color: var(--main-color);
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .home-img img {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .banner {
+        width: 100%;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        background-color: transparent;
+        perspective: 400px;
+        padding: 2rem;
+    }
+
+    .banner .slider {
+        width: 80px;
+        height: 150px;
+    }
+
+    .banner .slider .item {
+        transform: rotateY(calc(var(--position) * 360deg / var(--quantity))) translateZ(150px);
+    }
+}
+
+/* Navbar and header adjustments for screens 768px and below */
+@media (max-width: 768px) {
+    .header {
+        padding: 2rem 5%;
+    }
+
+    .home-content {
+        margin-top: 10px;
+        max-width: 100%;
+        align-content: center;
+    }
+
+    .home-content h1 {
+        font-size: 4rem; /* Adjusted for better fit on smaller screens */
+        font-weight: 700;
+        margin: 20px 0;
+    }
+
+    .home-content h3 {
+        font-size: 2.5rem; /* Adjusted for better fit on smaller screens */
+        margin-bottom: 1rem;
+    }
+
+    .home-content p {
+        font-size: 1.6rem; /* Adjusted for better fit on smaller screens */
+        font-weight: 400;
+        line-height: 2.5rem;
+        margin-bottom: 3rem;
+        margin-left: 20px; /* Added left margin for better alignment */
+    }
+
+    .change-text {
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .change-text h3 {
+        display: inline-flex;
+        margin: 0;
+        position: relative;
+    }
+
+    .change-text h3 .word {
+        margin-top: 35px;
+        color: var(--main-color);
+        position: absolute;
+        opacity: 0;
+        direction: calc(50% - 50%);
+        transition: opacity 0.5s ease;
+        margin-right: 100px; /* Space between words */
+    }
+
+    .change-text h3 .word .letter {
+        display: flex;
+        transform-origin: center center 0;
+        transition: transform 0.32s cubic-bezier(0.6, 0, 0.7, 0.2), opacity 0.32s ease;
+    }
+
+    .letter.out {
+        transform: rotateX(90deg);
+        opacity: 0; /* Hide letters that are transitioning out */
+    }
+
+    .letter.in {
+        transform: rotateX(0deg);
+        opacity: 1; /* Show letters that are transitioning in */
+        transition: transform 0.38s ease, opacity 0.38s ease;
+    }
+
+    .letter.behind {
+        transform: rotateX(-90deg);
+        opacity: 0; /* Hide letters that are behind */
+    }
+
+    /* Social Icons Styles */
+    .social-icons {
+        display: flex;
+        gap: 1.5rem; /* Adjusted for smaller screens */
+        margin-bottom: 2rem;
+        justify-content: center;
+    }
+
+    .social-icons a {
+        width: 4rem;
+        height: 4rem;
+        font-size: 2rem; /* Adjusted for smaller screens */
+    }
+
+    .home-img img {
+        width: 80%; /* Adjusted for smaller screens */
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    #menu-icon {
+        display: block;
+    }
+}
+
+/* Small screens adjustments (480px and below) */
+@media (max-width: 480px) {
+    * {
+        align-items: center;
+        align-content: center;
+    }
+
+    .header {
+        padding: 1.5rem 5%;
+    }
+
+    .home-img img {
+        width: 60%;
+        margin: 10px 0; /* Reduced margin for smaller screens */
+    }
+
+    .logo {
+        font-size: 1.5rem; /* Adjusted for smaller screens */
+    }
+
+    .navbar a {
+        font-size: 0.8rem; /* Adjusted for smaller screens */
+    }
+
+    .banner {
+        height: 100vh;
+    }
+
+    .banner .slider {
+        width: 60px; /* Adjusted for smaller screens */
+        height: 120px; /* Adjusted for smaller screens */
+    }
+
+    .banner .slider .item {
+        transform: rotateY(calc(var(--position) * 360deg / var(--quantity))) translateZ(120px); /* Adjusted for smaller screens */
+    }
+}
+
+/* Keyframes for auto-rotation */
+@keyframes autoRotate {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
 }
